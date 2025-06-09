@@ -1,4 +1,3 @@
 Full Stack Realtime Chat App
 
-![Demo App](/frontend/public/screenshot-for-readme.png)
-
+![Screenshot](<Screenshot 2025-06-09 224550.png>)
