@@ -8,10 +8,14 @@ const NoChatSelected = () => {
         <div className="flex justify-center gap-4 mb-4">
           <div className="relative">
             <div
-              className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center
+              className="w-40 h-25 rounded-2xl bg-primary/10 flex items-center
              justify-center animate-bounce"
             >
-              <MessageSquare className="w-8 h-8 text-primary " />
+              <img
+                src="/src/assets/chatty-logo.png"
+                alt="Chatty Logo"
+                className="w-21 h-25 rounded-xl object-contain"
+              />
             </div>
           </div>
         </div>
