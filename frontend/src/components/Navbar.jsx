@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import { LogOut, MessageSquare, Settings, User } from "lucide-react";
+import logo from "../assets/chatty-logo.png";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
@@ -15,7 +16,7 @@ const Navbar = () => {
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-2.5 hover:opacity-80 transition-all">
               <img
-                src="/src/assets/chatty-logo.png"
+                src={logo}
                 alt="Chatty Logo"
                 className="h-10 w-auto object-contain rounded"
               />

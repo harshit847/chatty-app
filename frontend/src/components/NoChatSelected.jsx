@@ -1,4 +1,5 @@
 import { MessageSquare } from "lucide-react";
+import logo from "../assets/chatty-logo.png";
 
 const NoChatSelected = () => {
   return (
@@ -12,7 +13,7 @@ const NoChatSelected = () => {
              justify-center animate-bounce"
             >
               <img
-                src="/src/assets/chatty-logo.png"
+                src={logo}
                 alt="Chatty Logo"
                 className="w-21 h-25 rounded-xl object-contain"
               />
