@@ -3,6 +3,7 @@ import Message from "../models/message.model.js";
 
 import cloudinary from "../lib/cloudinary.js";
 import { getReceiverSocketId, io } from "../lib/socket.js";
+import { generateReplySuggestions } from "../lib/ai.js";
 
 export const getUsersForSidebar = async (req, res) => {
   try {
@@ -43,7 +44,6 @@ export const sendMessage = async (req, res) => {
 
     let imageUrl;
     if (image) {
-      // Upload base64 image to cloudinary
       const uploadResponse = await cloudinary.uploader.upload(image);
       imageUrl = uploadResponse.secure_url;
     }
@@ -66,5 +66,30 @@ export const sendMessage = async (req, res) => {
   } catch (error) {
     console.log("Error in sendMessage controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const getAiReplySuggestions = async (req, res) => {
+  try {
+    const {
+      messageText = "",
+      senderName = "them",
+      receiverName = "you",
+      recentMessages = [],
+    } = req.body;
+
+    const suggestions = await generateReplySuggestions({
+      messageText,
+      senderName,
+      receiverName,
+      recentMessages,
+    });
+
+    res.status(200).json({ suggestions });
+  } catch (error) {
+    console.log("Error in getAiReplySuggestions controller: ", error.message);
+    res.status(200).json({
+      suggestions: ["Sounds good", "Got it, thanks", "Let me get back to you"],
+    });
   }
 };
