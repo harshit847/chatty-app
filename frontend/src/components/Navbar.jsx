@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
-import { LogOut, MessageSquare, Settings, User } from "lucide-react";
+import { LogOut, Settings, User } from "lucide-react";
 import logo from "../assets/chatty-logo.png";
 
 const Navbar = () => {
@@ -20,17 +20,14 @@ const Navbar = () => {
                 alt="Chatty Logo"
                 className="h-10 w-auto object-contain rounded"
               />
-
+              <span className="hidden sm:block font-bold text-lg tracking-tight">Chatty</span>
             </Link>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <Link
               to={"/settings"}
-              className={`
-              btn btn-sm gap-2 transition-colors
-              
-              `}
+              className="btn btn-ghost btn-sm gap-2 rounded-full"
             >
               <Settings className="w-4 h-4" />
               <span className="hidden sm:inline">Settings</span>
@@ -38,13 +35,16 @@ const Navbar = () => {
 
             {authUser && (
               <>
-                <Link to={"/profile"} className={`btn btn-sm gap-2`}>
-                  <User className="size-5" />
+                <Link to={"/profile"} className="btn btn-ghost btn-sm gap-2 rounded-full">
+                  <User className="size-4" />
                   <span className="hidden sm:inline">Profile</span>
                 </Link>
 
-                <button className="flex gap-2 items-center" onClick={logout}>
-                  <LogOut className="size-5" />
+                <button
+                  onClick={logout}
+                  className="btn btn-ghost btn-sm gap-2 rounded-full hover:bg-error/10 hover:text-error"
+                >
+                  <LogOut className="size-4" />
                   <span className="hidden sm:inline">Logout</span>
                 </button>
               </>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,4 +6,32 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: oklch(var(--p) / 0.25);
+}
+
+.chat-canvas {
+  background:
+    radial-gradient(1100px 480px at 75% -10%, oklch(var(--p) / 0.13), transparent 60%),
+    radial-gradient(900px 420px at 8% 112%, oklch(var(--s) / 0.11), transparent 60%),
+    linear-gradient(to bottom, oklch(var(--b1) / 0.5), oklch(var(--b2) / 0.55));
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--bc) / 0.18);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--bc) / 0.32);
 }

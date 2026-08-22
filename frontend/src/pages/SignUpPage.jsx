@@ -43,13 +43,13 @@ const SignUpPage = () => {
           <div className="text-center mb-8">
             <div className="flex flex-col items-center gap-2 group pt-6">
               <div
-                className="size-12 rounded-xl bg-primary/10 flex items-center justify-center 
-              group-hover:bg-primary/20 transition-colors"
+                className="size-12 rounded-2xl bg-primary/10 flex items-center justify-center
+              group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-200"
               >
                 <MessageSquare className="size-6 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold mt-2">Create Account</h1>
-              <p className="text-base-content/60">Get started with your free account</p>
+              <h1 className="text-2xl font-bold tracking-tight mt-2">Create Account</h1>
+              <p className="text-sm text-base-content/60">Get started with your free account</p>
             </div>
           </div>
 
@@ -119,7 +119,11 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-full" disabled={isSigningUp}>
+            <button
+              type="submit"
+              className="btn btn-primary w-full rounded-lg h-11 min-h-0 shadow-md"
+              disabled={isSigningUp}
+            >
               {isSigningUp ? (
                 <>
                   <Loader2 className="size-5 animate-spin" />

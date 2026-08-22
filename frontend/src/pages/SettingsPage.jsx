@@ -14,8 +14,8 @@ const SettingsPage = () => {
     <div className="h-scroll container mx-auto px-4 pt-20 max-w-5xl">
       <div className="space-y-6">
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold">Theme</h2>
-          <p className="text-sm text-base-content/70">Choose a theme for your chat interface</p>
+          <h2 className="text-lg font-semibold tracking-tight">Theme</h2>
+          <p className="text-sm text-base-content/60">Choose a theme for your chat interface</p>
         </div>
 
         <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
@@ -23,12 +23,17 @@ const SettingsPage = () => {
             <button
               key={t}
               className={`
-                group flex flex-col items-center gap-1.5 p-2 rounded-lg transition-colors
-                ${theme === t ? "bg-base-200" : "hover:bg-base-200/50"}
+                group flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all duration-150 border
+                ${theme === t ? "bg-primary/10 border-primary/40" : "border-transparent hover:bg-base-200/70"}
               `}
               onClick={() => setTheme(t)}
             >
-              <div className="relative h-8 w-full rounded-md overflow-hidden" data-theme={t}>
+              <div
+                className={`relative h-8 w-full rounded-md overflow-hidden ring-1 ${
+                  theme === t ? "ring-primary" : "ring-base-300"
+                }`}
+                data-theme={t}
+              >
                 <div className="absolute inset-0 grid grid-cols-4 gap-px p-1">
                   <div className="rounded bg-primary"></div>
                   <div className="rounded bg-secondary"></div>
@@ -36,7 +41,11 @@ const SettingsPage = () => {
                   <div className="rounded bg-neutral"></div>
                 </div>
               </div>
-              <span className="text-[11px] font-medium truncate w-full text-center">
+              <span
+                className={`text-[11px] font-medium truncate w-full text-center ${
+                  theme === t ? "text-primary" : ""
+                }`}
+              >
                 {t.charAt(0).toUpperCase() + t.slice(1)}
               </span>
             </button>
@@ -44,8 +53,8 @@ const SettingsPage = () => {
         </div>
 
         {/* Preview Section */}
-        <h3 className="text-lg font-semibold mb-3">Preview</h3>
-        <div className="rounded-xl border border-base-300 overflow-hidden bg-base-100 shadow-lg">
+        <h3 className="text-lg font-semibold tracking-tight mb-3">Preview</h3>
+        <div className="rounded-2xl border border-base-300 overflow-hidden bg-base-100 shadow-md">
           <div className="p-4 bg-base-200">
             <div className="max-w-lg mx-auto">
               {/* Mock Chat UI */}

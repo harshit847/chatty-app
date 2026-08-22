@@ -1,26 +1,26 @@
 const MessageSkeleton = () => {
-  // Create an array of 6 items for skeleton messages
   const skeletonMessages = Array(6).fill(null);
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-4">
-      {skeletonMessages.map((_, idx) => (
-        <div key={idx} className={`chat ${idx % 2 === 0 ? "chat-start" : "chat-end"}`}>
-          <div className="chat-image avatar">
-            <div className="size-10 rounded-full">
-              <div className="skeleton w-full h-full rounded-full" />
+    <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
+        {skeletonMessages.map((_, idx) => {
+          const isSent = idx % 2 === 1;
+          return (
+            <div key={idx} className={`flex items-end gap-2.5 ${isSent ? "justify-end" : "justify-start"}`}>
+              {!isSent && <div className="skeleton size-8 shrink-0 rounded-full" />}
+              <div className="flex flex-col gap-2">
+                <div
+                  className={`skeleton h-12 w-52 rounded-2xl sm:w-60 ${
+                    isSent ? "rounded-br-md" : "rounded-bl-md"
+                  }`}
+                />
+                <div className={`skeleton h-2.5 w-14 rounded-full ${isSent ? "self-end" : ""}`} />
+              </div>
             </div>
-          </div>
-
-          <div className="chat-header mb-1">
-            <div className="skeleton h-4 w-16" />
-          </div>
-
-          <div className="chat-bubble bg-transparent p-0">
-            <div className="skeleton h-16 w-[200px]" />
-          </div>
-        </div>
-      ))}
+          );
+        })}
+      </div>
     </div>
   );
 };
